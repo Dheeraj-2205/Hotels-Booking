@@ -1,5 +1,4 @@
-import React from "react";
-
+'use client'
 const Banner = () => {
   return (
     <div className="bg-gradient-to-r from-green-600 to-light-green-400 h-60">

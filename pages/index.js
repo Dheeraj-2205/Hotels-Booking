@@ -3,9 +3,18 @@ import Header from "../components/Header";
 import PlaceToVisit from "@/components/PlaceToVisit";
 import Banner from "@/components/Banner";
 import Image from "next/image";
+import Head from "next/head";
+import Exclusive from "@/components/Exclusive";
 const Index = () => {
   return (
     <div>
+      <Head>
+        <title>
+          Dawn : Best Online Hotel Booking Site
+        </title>
+        <link rel= "icon" href = "/hotel-logo.png"></link>
+      </Head>
+      {/* <NextTopLoader/> */}
       <Header />
       <PlaceToVisit />
       <Banner />
@@ -28,6 +37,8 @@ const Index = () => {
           className="h-40 w-full"
         />
       </div>
+
+      <Exclusive/>
       
     </div>
   );
