@@ -5,6 +5,7 @@ import Banner from "@/components/Banner";
 import Image from "next/image";
 import Head from "next/head";
 import Exclusive from "@/components/Exclusive";
+import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div>
@@ -39,6 +40,7 @@ const Index = () => {
       </div>
 
       <Exclusive/>
+      <Footer/>
       
     </div>
   );

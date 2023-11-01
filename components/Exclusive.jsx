@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 const Exclusive = () => {
   return (
-    <div className=" flex justify-center my-14 border border-gray-300 rounded-lg px-5">
+    <div className=" flex justify-between my-14 border border-gray-300 rounded-lg px-5">
       <div className="flex items-center">
         <Image
           src="/blueFire.png"
@@ -19,15 +19,15 @@ const Exclusive = () => {
         <p></p>
       </div>
 
-      <div>
+      <div className="flex">
         <input
           type="email"
-          className=" px-6 py-3 outline-none border border-gray-300 rounded-lg mr-5"
+          className=" px-6 py-3 outline-none border border-gray-300 rounded-lg mr-5 w-80 h-16"
           placeholder="e.g. john@gmail.com"
         />
         <button
           type="submit"
-          className="w-24 h-14 bg-red-500 text-xl text-white cursor-pointer"
+          className="w-48 h-14 bg-red-500 text-xl text-white cursor-pointer"
         >
           Notify
         </button>
