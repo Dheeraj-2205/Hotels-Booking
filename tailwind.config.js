@@ -10,7 +10,9 @@ module.exports = {
       backgroundImage:{
         "loginBackGround" :"url(/backGround-login.jpg)"
       },
-      
+      height : {
+        'large-box' :"335px"
+      }
     },
   },
   plugins: [],
