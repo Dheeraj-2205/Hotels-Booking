@@ -1,7 +1,7 @@
 import connectDb from "@/db"
 import User from "@/models/User.js"
 import bcrypt from "bcrypt"
-import jwt from 'jwt'
+import jwt from 'jsonwebtoken'
 
 export default async function handler (req,res){
     if(req.method === 'POST'){
@@ -31,5 +31,9 @@ export default async function handler (req,res){
                 message : "Invalid Credentials"
             })
         }
+
+        const token = jwt.sign({token : emailExists._id},"DheerajJoshi",{
+            expiredIn: "30d"
+        })
     }
 }
