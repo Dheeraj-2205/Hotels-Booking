@@ -15,6 +15,7 @@ export default async function handler (req,res){
                 message : "Email And Password Required"
             })
         }
+        
         const emailExists = await User.findOne({email});
 
         if(!emailExists){
@@ -23,8 +24,8 @@ export default async function handler (req,res){
                 message : "Please Register ...... !"
             })
         }
-        const passwordMatch = bcrypt.compare(password, emailExists.password);
-
+        const passwordMatch = await bcrypt.compare(password, emailExists.password);
+        
         if(!passwordMatch){
             return res.status(400).json({
                 success : false,
@@ -33,7 +34,11 @@ export default async function handler (req,res){
         }
 
         const token = jwt.sign({token : emailExists._id},"DheerajJoshi",{
-            expiredIn: "30d"
+            expiresIn: "30d"
+        })
+        res.status(200).json({
+            message :"LoggedIn Successfully !" ,
+            token
         })
     }
 }

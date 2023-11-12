@@ -1,9 +1,22 @@
-import React from "react";
+'use client'
+
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Block from "./Block";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
+  let auth;
+  useEffect(() =>{
+    auth = Cookies.get("user");
+  })
+  const handleLogout = () =>{
+    Cookies.remove("user")
+    router.push("/")
+  }
   return (
     <div className="flex justify-between border-gray-500 items-center h-28 ">
       <Image
@@ -22,8 +35,20 @@ const Header = () => {
         <Block />
         <Block />
         <div className="flex items-center px-3">
-          <Image src={""} alt={"demo"} width={200} height={200} className="w-10 h-10 rounded-full mr-5" />
-          <Link href= {"/login"}><h3 className="font-bold">Login / SignUp</h3></Link>
+          <Image
+            src={""}
+            alt={"demo"}
+            width={200}
+            height={200}
+            className="w-10 h-10 rounded-full mr-5"
+          />
+          {auth ? (
+            <h3 className="font-bold cursor-pointer" onClick={handleLogout}>Logout</h3>
+          ) : (
+            <Link href={"/login"}>
+              <h3 className="font-bold">Login / SignUp</h3>
+            </Link>
+          )}
         </div>
       </div>
     </div>

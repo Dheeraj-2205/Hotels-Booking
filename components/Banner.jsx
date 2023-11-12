@@ -27,7 +27,7 @@ const Banner = () => {
           className=" h-16 outline-none px-3 text-lg
           border-r-2 border-gray-400 col-span-1"
         />
-        <Link href = {"/hotels"}>
+        <Link href = {"/hotels?city='Bangalore'"}>
           <button
             type="submit"
             className="h-16 px-3 py-2 cols-span-1 bg-red-600 hover:cursor-pointer hover:bg-red-400 text-lg text-white"
