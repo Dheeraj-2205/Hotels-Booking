@@ -1,0 +1,35 @@
+import connectDb from "@/db"
+import User from "@/models/User.js"
+import bcrypt from "bcrypt"
+import jwt from 'jwt'
+
+export default async function handler (req,res){
+    if(req.method === 'POST'){
+
+        connectDb();
+        const {email,password} = req.body;
+
+        if(!email && !password){
+            return res.status(401).json({
+                success : false,
+                message : "Email And Password Required"
+            })
+        }
+        const emailExists = await User.findOne({email});
+
+        if(!emailExists){
+            return res.status(400).json({
+                success : false,
+                message : "Please Register ...... !"
+            })
+        }
+        const passwordMatch = bcrypt.compare(password, emailExists.password);
+
+        if(!passwordMatch){
+            return res.status(400).json({
+                success : false,
+                message : "Invalid Credentials"
+            })
+        }
+    }
+}
