@@ -1,4 +1,5 @@
-'use client'
+"use client";
+import Link from "next/link";
 const Banner = () => {
   return (
     <div className="bg-gradient-to-r from-green-600 to-light-green-400 h-60">
@@ -26,12 +27,14 @@ const Banner = () => {
           className=" h-16 outline-none px-3 text-lg
           border-r-2 border-gray-400 col-span-1"
         />
-        <button
-          type="submit"
-          className="h-16 px-3 py-2 cols-span-1 bg-red-600 hover:cursor-pointer hover:bg-red-400 text-lg text-white"
-        >
-          Search
-        </button>
+        <Link href = {"/hotels"}>
+          <button
+            type="submit"
+            className="h-16 px-3 py-2 cols-span-1 bg-red-600 hover:cursor-pointer hover:bg-red-400 text-lg text-white"
+          >
+            Search
+          </button>
+        </Link>
       </div>
       <div className="flex mx-20 my-5">
         <button

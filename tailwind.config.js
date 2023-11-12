@@ -6,7 +6,12 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        "loginBackGround" :"url(/backGround-login.jpg)"
+      },
+      
+    },
   },
   plugins: [],
 }

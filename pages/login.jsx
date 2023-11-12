@@ -8,12 +8,12 @@ const Login = () => {
         <title>DAWN Login</title>
       </Head>
 
-      <div className="flex h-screen justify-center items-center relative">
-        <div className=" absolute w-full top-10 px-20 flex items-center">
+      <div className=" bg-loginBackGround bg-no-repeat bg-cover flex h-screen justify-center items-center relative">
+        <div className=" text-white opacity-80 absolute w-full top-10 px-20 flex items-center">
           <h2 className=" text-4xl font-bold mr-5">Hotels </h2>
         </div>
         <div className="flex justify-center items-center w-9/12">
-          <div>
+          <div >
             <p className=" font-bold text-5xl text-justify">
               There is a ways to hotels around
             </p>
@@ -24,7 +24,7 @@ const Login = () => {
               voluptatem deleniti tempore.
             </p>
           </div>
-          <div className=" ml-20 pb-40 w-10/12 border-2 border-red-500">
+          <div className=" ml-20 pb-40 w-10/12 border bg-slate-50">
             <p className="h-10 flex items-center px-10 bg-gradient-to-r from-red-500 to bg-red-800 font-bold text-white">
               Sign Up & get your hotel
             </p>
@@ -34,15 +34,25 @@ const Login = () => {
                 Please Enter Your Phone Number To Continue
               </p>
               <input
+                type="text"
+                placeholder="Enter Your Name...."
+                className=" outline-none border border-black px-3 py-1 w-96 h-10 my-3"
+              />
+              <input
                 type="email"
                 placeholder="Enter Your Email...."
-                className=" outline-none border border-black px-3 py-1 w-96 h-10"
+                className=" outline-none border border-black px-3 py-1 w-96 h-10 my-3"
+              />
+              <input
+                type="password"
+                placeholder="Enter Your Password...."
+                className=" outline-none border border-black px-3 py-1 w-96 h-10 my-3"
               />
               <button
                 type="submit"
                 className="w-96 h-14 text-lg font-bold bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white my-5 rounded-lg"
               >
-                Verify Email
+                Sign Up 
               </button>
               <p className=" my-1 text-lg">
                 <span>Already Have An Account</span>
