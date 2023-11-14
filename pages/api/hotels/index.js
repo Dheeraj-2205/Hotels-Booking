@@ -34,12 +34,3 @@ export default async function handler (req,res){
     }
 }
 
-export async function getServerSideProps (city) {
-    console.log(city.query)
-
-    return {
-        props : {
-            hotels : []
-        }
-    }
-}

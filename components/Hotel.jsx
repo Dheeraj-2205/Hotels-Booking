@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-const Hotel = () => {
+const Hotel = ({e}) => {
   return (
     <div className=" border-2 border-red-500 rounded-lg h-72 w-full m-5 p-5">
       <div className="flex">
@@ -45,8 +45,7 @@ const Hotel = () => {
         </div>
         <div className="ml-20">
           <h2 className="font-bold text-2xl line-clamp-1">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis,
-            officiis?
+           {e?.name}
           </h2>
           <p className=" text-justify my-5 text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
