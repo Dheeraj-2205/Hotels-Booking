@@ -13,7 +13,7 @@ export default async function handler (req,res){
     // }
 
     if(req.method === "GET"){
-        const hotels = await Hotel.find({location : req.query.city});
+        const hotels = await Hotel.find({ location : req.query.city });
 
         if(hotels.length > 0){
             return res.status(200).json({
@@ -26,10 +26,6 @@ export default async function handler (req,res){
         res.status(200).json({
             success : true,
             allHotels
-        })
-        res.status(200).json({
-            success : true,
-            data : req.query
         })
     }
 }

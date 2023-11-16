@@ -1,6 +1,10 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
 const Banner = () => {
+  const [state,setState] = useState("");
+
+  
   return (
     <div className="bg-gradient-to-r from-green-600 to-light-green-400 h-60">
       <div className="mx-10">
@@ -14,6 +18,7 @@ const Banner = () => {
           placeholder="Search........."
           className=" h-16 outline-none px-3 text-lg
           border-r-2 border-gray-400 col-span-2"
+          onChange={(e) => setState(e.target.value)}
         />
         <input
           type="text"
@@ -27,7 +32,7 @@ const Banner = () => {
           className=" h-16 outline-none px-3 text-lg
           border-r-2 border-gray-400 col-span-1"
         />
-        <Link href = {`/hotels?city=Bangalore`}>
+        <Link href = {`/hotels?city=${state}`}>
           <button
             type="submit"
             className="h-16 px-3 py-2 cols-span-1 bg-red-600 hover:cursor-pointer hover:bg-red-400 text-lg text-white"
