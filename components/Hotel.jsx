@@ -1,11 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 const Hotel = ({ e }) => {
-  console.log(e);
 
   return (
     <>
+      <Head>
+        <title>Hotel List</title>
+      </Head>
       <div className=" border-2 border-red-500 rounded-lg h-72 w-full m-5 p-5">
         <div className="flex">
           <Image
@@ -61,7 +64,7 @@ const Hotel = ({ e }) => {
                 Price : 	&#8377;{e.price}
               </button>
               <Link
-                href={"/hotels/2"}
+                href={`/hotels/${e._id}`}
                 className=" text-xl font-bold text-red-600 ml-10"
               >
                 See Details

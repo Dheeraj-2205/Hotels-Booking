@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const url = "mongodb+srv://djsays124:t7BXahBKIAjUYwYG@cluster0.2fzlrse.mongodb.net/DAWN"
+const url = process.env.MONGO_URI
 const connectDb = async () =>{
     await mongoose.connect(url,{
         useNewUrlParser: true,

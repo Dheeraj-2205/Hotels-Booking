@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
-  console.log("object");
   if (req.method === "POST") {
     connectDb();
 
@@ -34,7 +33,7 @@ export default async function handler(req, res) {
 
     const result = await newUser.save();
 
-    const token = jwt.sign({ token: result._id }, "DheerajJoshi", {
+    const token = jwt.sign({ token: result._id }, process.env.JWT_TOKEN, {
       expiresIn: "7d",
     });
 

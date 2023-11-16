@@ -2,7 +2,6 @@ import React from "react";
 import Hotel from "@/components/Hotel";
 import Header from "@/components/Header";
 const Hotels = ({hotels}) => {
-  // console.log(hotels.hotels)
   return (
     <>
       <Header />
@@ -23,7 +22,7 @@ export default Hotels
 
 export async function getServerSideProps(context) {
   try {
-    const res = await fetch(`http://localhost:3000/api/hotels?city=${context.query.city}`);
+    const res = await fetch(`${FRONTEND_URI}/api/hotels?city=${context.query.city}`);
 
     if (!res.ok) {
       return {
@@ -32,7 +31,6 @@ export async function getServerSideProps(context) {
     }
 
     const data = await res.json();
-    console.log(data);
 
     return {
       props: {

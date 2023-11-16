@@ -33,7 +33,7 @@ export default async function handler (req,res){
             })
         }
 
-        const token = jwt.sign({token : emailExists._id},"DheerajJoshi",{
+        const token = jwt.sign({token : emailExists._id},process.env.JWT_TOKEN,{
             expiresIn: "30d"
         })
         res.status(200).json({
