@@ -1,8 +1,21 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const SingleHotel = ({ hotel }) => {
+  let router = useRouter();
+  let auth;
+  if (typeof window !== undefined) {
+    auth = Cookies.get("user");
+  }
+
+  const LoginRedirect = () =>{
+    router.push("/login")
+  }
   return (
     <>
       <Head>
@@ -43,9 +56,13 @@ const SingleHotel = ({ hotel }) => {
                 ))
               : ""}
           </ul>
-          <button className=" w-60 h-14 rounded-lg bg-red-600 text-lg text-white font-bold my-5">
-            Book Now
-          </button>
+          {auth ? (
+            <button className=" w-60 h-14 rounded-lg bg-green-400 text-lg text-white font-bold my-5">
+              Book Now
+            </button>
+          ) : (
+            <button className=" w-60 h-14 rounded-lg bg-red-600 text-lg text-white font-bold my-5" onClick={LoginRedirect}>Please Login </button>
+          )}
         </div>
       </div>
     </>
@@ -55,7 +72,9 @@ const SingleHotel = ({ hotel }) => {
 export default SingleHotel;
 
 export async function getServerSideProps(ctx) {
-  const res = await fetch(`${process.env.FRONTEND_URI}/api/hotels/${ctx.query.id}`);
+  const res = await fetch(
+    `${process.env.FRONTEND_URI}/api/hotels/${ctx.query.id}`
+  );
   const data = await res.json();
   return {
     props: {
@@ -64,5 +83,4 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-// password : t7BXahBKIAjUYwYG
-// user  :djsays124
+

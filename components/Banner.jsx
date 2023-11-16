@@ -16,7 +16,7 @@ const Banner = () => {
         <input
           type="text"
           placeholder="Search........."
-          className=" w-96 h-16 outline-none px-3 text-lg
+          className=" w-6/12 h-16 outline-none px-3 text-lg
           border-r-2 border-gray-400 col-span-2"
           onChange={(e) => setState(e.target.value)}
         />

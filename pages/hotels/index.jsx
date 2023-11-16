@@ -6,15 +6,19 @@ const Hotels = ({hotels}) => {
     <>
       <Header />
 
-      {hotels
-        ? hotels.map((e) => {
-            return (
-              <div className="m-5" key={e._id}>
-                <Hotel e={e} />
-              </div>
-            );
-          })
-        : ""}
+      <div className=" grid grid-cols-12">
+
+        {hotels
+          ? hotels.map((e) => {
+              return (
+                <div className="m-5 col-span-9" key={e._id}>
+                  <Hotel e={e} />
+                </div>
+              );
+            })
+          : ""}
+      </div>
+
     </>
   );
 };
@@ -22,7 +26,7 @@ export default Hotels
 
 export async function getServerSideProps(context) {
   try {
-    const res = await fetch(`${FRONTEND_URI}/api/hotels?city=${context.query.city}`);
+    const res = await fetch(`${process.env.FRONTEND_URI}/api/hotels?city=${context.query.city}`);
 
     if (!res.ok) {
       return {

@@ -14,12 +14,15 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+
   const handlesignUp = async() => {
     const res = await axios.post(`/api/user/register`, {name,email,password});
 
     if(res?.data){
-      Cookies.set('user' , res.data.token)
+      Cookies.set('user' , res.data.token , {expires : 7});
+
       alert(res?.data.message)
+      router.back()
     }
   };
 
@@ -29,9 +32,9 @@ const Login = () => {
     const res = await axios.post(`/api/user/login`, {email,password});
 
     if(res?.data){
-      Cookies.set('user' , res.data.token)
+      Cookies.set('user' , res.data.token ,{expires : 7})
       alert(res?.data.message)
-      router.push('/')
+      router.back()
     }
   };
 

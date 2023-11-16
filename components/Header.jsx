@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Block from "./Block";
 import Link from "next/link";
@@ -9,14 +9,20 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const router = useRouter();
-  let auth;
-  useEffect(() =>{
-    auth = Cookies.get("user");
-  })
-  const handleLogout = () =>{
-    Cookies.remove("user")
-    router.push("/")
-  }
+
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const key = Cookies.get("user");
+    if(key){
+      setAuth(true);
+    }else{
+      setAuth(false)
+    }
+  }, [auth]);
+  const handleLogout = () => {
+    Cookies.remove("user");
+    router.push("/");
+  };
   return (
     <div className="flex justify-between border-gray-500 items-center h-28 ">
       <Image
@@ -43,7 +49,9 @@ const Header = () => {
             className="w-10 h-10 rounded-full mr-5"
           />
           {auth ? (
-            <h3 className="font-bold cursor-pointer" onClick={handleLogout}>Logout</h3>
+            <h3 className="font-bold cursor-pointer" onClick={handleLogout}>
+              Logout
+            </h3>
           ) : (
             <Link href={"/login"}>
               <h3 className="font-bold">Login / SignUp</h3>
