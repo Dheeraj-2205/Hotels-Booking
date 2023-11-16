@@ -1,22 +1,28 @@
 import React from "react";
 import Hotel from "@/components/Hotel";
 import Header from "@/components/Header";
+import Filters from "@/components/Filters";
 const Hotels = ({hotels}) => {
   return (
     <>
       <Header />
 
       <div className=" grid grid-cols-12">
+        <div className="col-span-3">
+          <Filters/>
+        </div>
+        <div className="col-span-9">
 
-        {hotels
-          ? hotels.map((e) => {
-              return (
-                <div className="m-5 col-span-9" key={e._id}>
-                  <Hotel e={e} />
-                </div>
-              );
-            })
-          : ""}
+          {hotels
+            ? hotels.map((e) => {
+                return (
+                  <div className="m-5 col-span-9" key={e._id}>
+                    <Hotel e={e} />
+                  </div>
+                );
+              })
+            : ""}
+        </div>
       </div>
 
     </>
