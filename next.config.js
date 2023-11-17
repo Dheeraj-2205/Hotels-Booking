@@ -6,7 +6,9 @@ const nextConfig = {
       "plus.unsplash.com",
       "t4.ftcdn.net",
       "images.oyoroomscdn.com",
-      "images.oyoroomscdn.com"
+      "images.oyoroomscdn.com",
+      "media.istockphoto.com",
+      "e7.pngegg.com"
     ]
   }
 }

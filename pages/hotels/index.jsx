@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Hotel from "@/components/Hotel";
 import Header from "@/components/Header";
 import Filters from "@/components/Filters";
 const Hotels = ({hotels}) => {
+  const [list,setList] = useState([]);
+  const [price,setPrice] = useState(3500);
+
+  const handlePrice = () =>{
+
+  }
   return (
     <>
       <Header />
 
       <div className=" grid grid-cols-12">
         <div className="col-span-3">
-          <Filters/>
+          <Filters price = {price} setPrice = {setPrice} handlePrice = {handlePrice} />
         </div>
         <div className="col-span-9">
 
