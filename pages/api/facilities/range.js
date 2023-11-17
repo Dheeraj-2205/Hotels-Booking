@@ -1,16 +1,20 @@
 import connectDb from "@/db";
 import Hotel from "@/models/Hotel";
 
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    connectDb();
 
-export default async function handler (req,res) {
-    if(req.method === 'GET'){
-        connectDb();
+    try {
+      const hotels = await Hotel.find({ price: { $lte: req.query.price } });
+      console.log(hotels);
 
-        const hotels = await Hotel.find({price : {$lte : req.query.price}});
-
-        res.status(200).json({
-            success :true,
-            hotels
-        })
+      res.status(200).json({
+        success: true,
+        hotels,
+      });
+    } catch (error) {
+        console.log(error)
     }
+  }
 }

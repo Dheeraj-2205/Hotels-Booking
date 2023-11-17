@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hotel from "@/components/Hotel";
 import Header from "@/components/Header";
 import Filters from "@/components/Filters";
 import axios from "axios";
 const Hotels = ({ hotels }) => {
   const [list, setList] = useState([]);
-  const [price, setPrice] = useState(3500);
+  const [prices, setPrices] = useState(3500);
+  const [checkedList, setCheckedList] = useState([]);
+
+
+  const handleCheckList = async() =>{
+    const {data} = await axios.get(`/api/facilities/search?val=${checkedList}`);
+
+    if(data?.hotels){
+      let newArr = data.hotels;
+      setList(newArr)
+    }
+  }
+
+  useEffect(()=>{
+    if(checkedList){
+      handleCheckList();
+    }
+  },[]);
+
 
   const handlePrice = async () => {
-    const { data } = await axios.get(
-      `${process.env.FRONTEND_URI}/api/facilitites/range?price=${price}`
-    );
-    console.log(data);
+    const res = await fetch(`/api/facilities/range?price=${prices}`);
+    const data = await res.json();
+
     if (data?.hotels) {
       setList(data.hotels);
     }
@@ -23,9 +40,11 @@ const Hotels = ({ hotels }) => {
       <div className=" grid grid-cols-12">
         <div className="col-span-3">
           <Filters
-            price={price}
-            setPrice={setPrice}
+            prices={prices}
+            setPrices={setPrices}
             handlePrice={handlePrice}
+            checkedList = {checkedList}
+            setCheckedList = {setCheckedList}
           />
         </div>
         <div className="col-span-9">
