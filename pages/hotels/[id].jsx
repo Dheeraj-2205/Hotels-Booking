@@ -1,21 +1,28 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const SingleHotel = ({ hotel }) => {
   let router = useRouter();
-  let auth;
-  if (typeof window !== undefined) {
-    auth = Cookies.get("user");
-  }
+  let [auth,setAuth] = useState(false);
+  
+  useEffect(()=>{
+    const cookie = Cookies.get("user");
+    if(cookie){
+      setAuth(true);
+      return;
+    };
+    setAuth(false);
+  },[]);
 
-  const LoginRedirect = () =>{
-    router.push("/login")
-  }
+  const LoginRedirect = () => {
+    router.push("/login");
+  };
   return (
     <>
       <Head>
@@ -57,11 +64,18 @@ const SingleHotel = ({ hotel }) => {
               : ""}
           </ul>
           {auth ? (
-            <button className=" w-60 h-14 rounded-lg bg-green-400 text-lg text-white font-bold my-5">
-              Book Now
-            </button>
+            <Link href={`/payment/${hotel?._id}`}>
+              <button className=" w-60 h-14 rounded-lg bg-green-400 text-lg text-white font-bold my-5">
+                Book Now
+              </button>
+            </Link>
           ) : (
-            <button className=" w-60 h-14 rounded-lg bg-red-600 text-lg text-white font-bold my-5" onClick={LoginRedirect}>Please Login </button>
+            <button
+              className=" w-60 h-14 rounded-lg bg-red-600 text-lg text-white font-bold my-5"
+              onClick={LoginRedirect}
+            >
+              Please Login{" "}
+            </button>
           )}
         </div>
       </div>
@@ -82,5 +96,3 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
-
-

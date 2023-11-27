@@ -16,8 +16,10 @@
     "mongoose": "^8.0.0",
     "next": "14.0.1",
     "nextjs-toploader": "^1.6.4",
+    "razorpay": "^2.9.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

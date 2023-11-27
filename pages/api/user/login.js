@@ -34,7 +34,7 @@ export default async function handler (req,res){
         }
 
         const token = jwt.sign({token : emailExists._id},process.env.JWT_TOKEN,{
-            expiresIn: "30d"
+            expiresIn: "5d"
         })
         res.status(200).json({
             message :"LoggedIn Successfully !" ,

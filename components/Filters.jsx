@@ -20,11 +20,11 @@ const Filters = ({ prices, setPrices, handlePrice, checkedList, setCheckedList }
     let newList = [];
     if(e.target.checked){
       newList.push(e.target.value);
-      setCheckedList(newList)
-      return
+      setCheckedList(newList);
+      return;
     }else{
       newList = newList.filter((i) => i !== e.target.value);
-      setCheckedList(newList)
+      setCheckedList(newList);
     }
   }
 
