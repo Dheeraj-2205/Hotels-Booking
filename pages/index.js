@@ -22,7 +22,7 @@ const Index = () => {
     
       <div className="max-10 my-14">
         <Image
-          src={"/luxury.jpg"}
+          src={"/banner1.avif"}
           alt="Banner1"
           width={200}
           height={200}
@@ -31,7 +31,7 @@ const Index = () => {
       </div>
       <div className="mb-14">
         <Image
-          src={""}
+          src={"/banner2.avif"}
           alt="Banner2"
           width={200}
           height={200}
