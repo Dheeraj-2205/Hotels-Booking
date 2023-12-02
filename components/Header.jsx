@@ -6,6 +6,7 @@ import Block from "./Block";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import jwt from 'jsonwebtoken';
 
 const Header = () => {
   const router = useRouter();
