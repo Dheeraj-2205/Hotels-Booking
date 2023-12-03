@@ -25,6 +25,7 @@ export default async function handler (req,res){
             })
         }
         const passwordMatch = await bcrypt.compare(password, emailExists.password);
+        console.log(passwordMatch)
         
         if(!passwordMatch){
             return res.status(400).json({

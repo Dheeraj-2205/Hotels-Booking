@@ -6,7 +6,7 @@ const Exclusive = () => {
     <div className="flex justify-between items-center my-14 border-2 rounded-lg border-gray-300 px-5">
       <div className="flex items-center">
         <Image
-          src={"/blueFire.png"}
+          src={"/fire.jpg"}
           alt="fire"
           width={200}
           height={200}

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const Login = () => {
@@ -13,6 +14,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
+  const notify = (a) => toast.success(a);
+  const errorNotify= (a) => toast.error(a)
 
 
   const handlesignUp = async() => {
@@ -29,12 +33,17 @@ const Login = () => {
   const handleLogin = async() => {
     setLogin(true);
 
-    const res = await axios.post(`/api/user/login`, {email,password});
+    try {
+      const res = await axios.post(`/api/user/login`, {email,password});
 
-    if(res?.data){
-      Cookies.set('user' , res.data.token ,{expires : 7})
-      alert(res?.data.message)
-      router.back()
+      if(res?.data){
+        Cookies.set('user' , res.data.token ,{expires : 7})
+        notify(res?.data.message)
+        router.back()
+      }
+    } catch (error) {
+      errorNotify("Wrong Credentials")
+      
     }
   };
 
@@ -46,7 +55,7 @@ const Login = () => {
       <Head>
         <title>DAWN Login</title>
       </Head>
-
+      <Toaster/>
       <div className=" bg-loginBackGround bg-no-repeat bg-cover flex h-screen justify-center items-center relative">
         <div className=" text-white opacity-80 absolute w-full top-10 px-20 flex items-center">
           <h2 className=" text-4xl font-bold mr-5">Hotels </h2>
@@ -64,7 +73,7 @@ const Login = () => {
             </p>
           </div>
           <div className=" ml-20 pb-40 w-10/12 border bg-slate-50">
-            <p className="h-10 flex items-center px-10 bg-gradient-to-r from-red-500 to bg-red-800 font-bold text-white">
+            <p className="h-10 flex items-center px-10 bg-gradient-to-r from-orange-600 to bg-orange-400 font-bold text-white">
               Sign Up & get your hotel
             </p>
             <div className="px-10">
@@ -96,7 +105,7 @@ const Login = () => {
               />
               <button
                 type="submit"
-                className="w-96 h-14 text-lg font-bold bg-red-400 hover:cursor-pointer hover:bg-red-600 text-white my-5 rounded-lg"
+                className="w-96 h-14 text-lg font-bold bg-blue-600 hover:cursor-pointer hover:bg-blue-500 text-white my-5 rounded-lg"
                 onClick={login ? handleLogin :  handlesignUp}
               >
                 {
@@ -105,7 +114,7 @@ const Login = () => {
               </button>
               <p className=" my-1 text-lg">
                 <span>{login ? "Don't Have An Account.. ?" : "Already Have An Account" }</span>
-                <span className=" ml-1 border-b-2 border-red-500 text-red-600 pb-1 hover:cursor-pointer " onClick={handleToggle}>
+                <span className=" ml-1 border-b-2 border-blue-500 text-blue-600 pb-1 hover:cursor-pointer " onClick={handleToggle}>
                 {
                   login ? "Sign Up" : "Login"
                 }

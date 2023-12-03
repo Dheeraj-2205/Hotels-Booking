@@ -6,7 +6,6 @@ import Block from "./Block";
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import jwt from 'jsonwebtoken';
 
 const Header = () => {
   const router = useRouter();
@@ -14,10 +13,10 @@ const Header = () => {
   const [auth, setAuth] = useState(false);
   useEffect(() => {
     const key = Cookies.get("user");
-    if(key){
+    if (key) {
       setAuth(true);
-    }else{
-      setAuth(false)
+    } else {
+      setAuth(false);
     }
   }, [auth]);
   const handleLogout = () => {
@@ -35,28 +34,44 @@ const Header = () => {
       />
       <div className=" h-full flex ">
         <Block
+          image={"/twenty.png"}
           title={"Became a Vateran member"}
-          para={"Additional 10% off on stays"}
+          para={"Additional 20% off on stays"}
         />
-        <Block title={"Get Your VIP pass "} para={"30% off Of Luxury Room "} />
-        <Block />
-        <Block />
+        <Block
+          image={"/vip.jpeg"}
+          title={"Get Your VIP pass "}
+          para={"30% off Of Luxury Room "}
+        />
+        <Block
+          image={"/breakfast.png"}
+          title={" Free Breakfast "}
+          para={" 15% off Of HDFC Card "}
+        />
+        <Block
+          image={"/ten.png"}
+          title={" Coupon is also valid "}
+          para={"10% off On Rooms "}
+        />
         <div className="flex items-center px-3">
-          <Image
-            src={""}
-            alt={"demo"}
-            width={200}
-            height={200}
-            className="w-10 h-10 rounded-full mr-5"
-          />
           {auth ? (
             <h3 className="font-bold cursor-pointer" onClick={handleLogout}>
               Logout
             </h3>
           ) : (
-            <Link href={"/login"}>
-              <h3 className="font-bold">Login / SignUp</h3>
-            </Link>
+            <>
+              <Image
+                src={"/user.png"}
+                alt={"demo"}
+                width={200}
+                height={200}
+                className="w-10 h-10 rounded-full mr-5"
+              />
+
+              <Link href={"/login"}>
+                <h3 className="font-bold">Login / SignUp</h3>
+              </Link>
+            </>
           )}
         </div>
       </div>

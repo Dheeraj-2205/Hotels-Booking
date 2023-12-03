@@ -34,7 +34,7 @@ const Filters = ({ prices, setPrices, handlePrice, checkedList, setCheckedList }
 
   return (
     <>
-      <div className=" border-red-500 rounded-md m-5 h-auto py-10 px-3">
+      <div className=" border rounded-md m-5 h-auto py-10 px-3">
         <label className=" text-xl">Price : </label>
         <input
           type="range"
@@ -45,18 +45,18 @@ const Filters = ({ prices, setPrices, handlePrice, checkedList, setCheckedList }
           onChange={(e) => setPrices(e.target.value)}
           defaultValue={prices ? prices : ""}
         />
-        <span className=" ml-10">&#8377; {prices}</span>
+        <span className=" ml-10 text-lg">&#8377; {prices}</span>
       </div>
       <div>
         {/* } */}
         <button
-          className=" h-10 w-40 bg-green-500 cursor-pointer my-3"
+          className=" h-10 w-40 bg-blue-600 cursor-pointer my-3 text-white font-bold : 600 ml-5 rounded-md hover:bg-blue-500"
           onClick={handlePrice}
         >
           Search
         </button>
       </div>
-      <div className=" my-10">
+      <div className=" my-10 p-4 box-border border" >
         <h3 className=" font-bold text-xl my-3">Filter By Facilities : </h3>
         {list.map((e) => {
           return (
