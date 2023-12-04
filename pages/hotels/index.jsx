@@ -22,7 +22,7 @@ const Hotels = ({ hotels }) => {
     if(checkedList){
       handleCheckList();
     }
-  },[checkedList]);
+  },[checkedList,handleCheckList]);
 
 
   const handlePrice = async () => {

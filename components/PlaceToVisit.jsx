@@ -31,8 +31,8 @@ const PlaceToVisit = () => {
     <div>
         <div className="flex px-5 bg-gray-200 justify-between">
             {
-                List.map((ele)=>
-                    <span>{ele.name}</span>
+                List.map((ele,i)=>
+                    <span key={i}>{ele.name}</span>
                 )
             }
         </div>

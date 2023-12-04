@@ -38,7 +38,7 @@ const Payment = () => {
 
   useEffect(() => {
     makePayment();
-  }, []);
+  }, [makePayment]);
 
   return (
     <>
