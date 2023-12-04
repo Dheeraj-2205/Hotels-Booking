@@ -8,7 +8,7 @@ const Hotel = ({ e }) => {
       <Head>
         <title>Hotel List</title>
       </Head>
-      <div className=" border-2 border-red-500 rounded-lg h-72 w-full m-5 p-5">
+      <div className=" border-2 border-black-700 rounded-lg h-auto w-full m-5 p-5">
         <div className="flex">
           <Image
             src={
@@ -19,7 +19,7 @@ const Hotel = ({ e }) => {
             height={200}
             className="w-96 h-60 mr-3"
           />
-          <div className="grid grid-rows-3 gap-2">
+          <div className="grid grid-rows-3 gap-1">
 
             {
               e.gallery?.map((ele)=>(
@@ -36,10 +36,10 @@ const Hotel = ({ e }) => {
             
             
           </div>
-          <div className="ml-20">
+          <div className="ml-5 w-full">
             <h2 className="font-bold text-2xl line-clamp-1">{e.name}</h2>
             <p>{e.description}</p>
-            <h3>{e.location}</h3>
+            <h3 className=" font-bold text-1xl">{e.location}</h3>
             <p className="text-2xl my-5">
               <span className="font-bold">Facilties :</span>
               {e.facilities.map((ele) => (
@@ -50,6 +50,7 @@ const Hotel = ({ e }) => {
                       width={100}
                       height={100}
                       className=" w-8 h-8 rounded-full"
+                      alt="hotel"
                     />
                   </span>
                   <span>

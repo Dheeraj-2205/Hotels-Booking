@@ -6,19 +6,26 @@ import Head from "next/head";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Carousel } from "react-bootstrap";
 
 const SingleHotel = ({ hotel }) => {
+  console.log(hotel.gallery);
   let router = useRouter();
-  let [auth,setAuth] = useState(false);
-  
-  useEffect(()=>{
+  let [auth, setAuth] = useState(false);
+
+  const [index, setIndex] = useState(0);
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
+
+  useEffect(() => {
     const cookie = Cookies.get("user");
-    if(cookie){
+    if (cookie) {
       setAuth(true);
       return;
-    };
+    }
     setAuth(false);
-  },[]);
+  }, []);
 
   const LoginRedirect = () => {
     router.push("/login");
@@ -28,14 +35,29 @@ const SingleHotel = ({ hotel }) => {
       <Head>
         <title>{hotel?.name}</title>
       </Head>
-      <div className="w-7/12 m-auto my-10">
-        <Image
-          src={hotel?.banner}
+      <div
+        className="w-7/12 m-auto my-10
+      "
+      >
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+          {hotel.gallery.map((item) => (
+            <Carousel.Item
+              key={item.id}
+              interval={4000}
+              // className={""}
+            >
+              <Image src={item} alt="slides" width={2000} height={2000} className="w-full h-large-box my-5" />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+        {/* <Image
+          src={hotel.banner}
           alt="hotel"
           width={2000}
           height={2000}
           className="w-full h-large-box my-5"
-        />
+        /> */}
+        ;
         <div className=" mx-20">
           <h3 className=" text-3xl font-bold">{hotel?.name}</h3>
           <p className=" text-xl my-5 text-justify">{hotel?.description}</p>
