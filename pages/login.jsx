@@ -25,7 +25,7 @@ const Login = () => {
     if(res?.data){
       Cookies.set('user' , res.data.token , {expires : 7});
 
-      alert(res?.data.message)
+      notify(res?.data.message)
       router.back()
     }
   };

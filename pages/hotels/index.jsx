@@ -10,7 +10,6 @@ const Hotels = ({ hotels }) => {
 
 
   const handleCheckList = async() =>{
-    console.log(checkedList)
     const {data} = await axios.get(`/api/facilities/search?val=${checkedList}`);
 
     if(data?.hotels){

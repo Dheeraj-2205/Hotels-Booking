@@ -55,9 +55,9 @@ const Header = () => {
         />
         <div className="flex items-center px-3">
           {auth ? (
-            <h3 className="font-bold cursor-pointer" onClick={handleLogout}>
+            <h6 className="font-bold cursor-pointer" onClick={handleLogout}>
               Logout
-            </h3>
+            </h6>
           ) : (
             <>
               <Image
@@ -68,8 +68,8 @@ const Header = () => {
                 className="w-10 h-10 rounded-full mr-5"
               />
 
-              <Link href={"/login"}>
-                <h3 className="font-bold">Login / SignUp</h3>
+              <Link href={"/login"}className=" text-black text-decoration-none">
+                <h6 className="font-bold">Login / SignUp</h6>
               </Link>
             </>
           )}

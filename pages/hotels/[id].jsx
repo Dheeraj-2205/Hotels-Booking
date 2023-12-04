@@ -9,7 +9,6 @@ import Link from "next/link";
 import { Carousel } from "react-bootstrap";
 
 const SingleHotel = ({ hotel }) => {
-  console.log(hotel.gallery);
   let router = useRouter();
   let [auth, setAuth] = useState(false);
 
