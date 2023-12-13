@@ -32,7 +32,7 @@ const Hotels = ({ hotels }) => {
       handleCheckList();
     }
     handlePrice();
-  },[checkedList]);
+  },[checkedList,handleCheckList]);
 
 
 
