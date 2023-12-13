@@ -14,7 +14,6 @@ const Payment = () => {
       id: router.query?.id,
     };
     const { data } = await axios.post(`/api/razorpay`, val);
-    console.log(val);
 
 
     const options = {
