@@ -19,8 +19,7 @@ const Hotels = ({ hotels }) => {
   }
 
   const handlePrice = async () => {
-    const res = await fetch(`/api/facilities/range?price=${prices}`);
-    const data = await res.json();
+    const {data} = await axios.get(`/api/facilities/range?price=${prices}`);
 
     if (data?.hotels) {
       setList(data.hotels);
@@ -31,8 +30,7 @@ const Hotels = ({ hotels }) => {
     if(checkedList){
       handleCheckList();
     }
-    handlePrice();
-  },[checkedList,handleCheckList]);
+  },[checkedList]);
 
 
 
