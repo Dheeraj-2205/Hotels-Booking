@@ -15,6 +15,11 @@ const Payment = () => {
     };
     const { data } = await axios.post(`/api/razorpay`, val);
 
+    if(!data){
+      console.log(`Error fetching Razorpay data`);
+      return;
+    }
+
 
     const options = {
       key: process.env.RAZORPAY_KEY,
@@ -41,7 +46,7 @@ const Payment = () => {
 
   return (
     <>
-      <Script src="http://checkout.razorpay.com/v1/checkout.js" />
+      <Script src="https://checkout.razorpay.com/v1/checkout.js" onLoad={()=>makePayment()} />
     </>
   );
 };
