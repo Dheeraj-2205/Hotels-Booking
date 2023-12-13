@@ -30,8 +30,7 @@ const Filters = ({ prices, setPrices, handlePrice, checkedList, setCheckedList }
 
   useEffect(() => {
     fetchFacilities();
-    handleCheckList();
-  }, [fetchFacilities,handleCheckList]);
+  }, [fetchFacilities]);
 
   return (
     <>
