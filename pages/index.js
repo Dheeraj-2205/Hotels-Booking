@@ -15,7 +15,6 @@ const Index = () => {
         </title>
         <link rel= "icon" href = "/hotel-logo.png"></link>
       </Head>
-      {/* <NextTopLoader/> */}
       <Header />
       <PlaceToVisit />
       <Banner />
@@ -27,6 +26,7 @@ const Index = () => {
           width={200}
           height={200}
           className="h-80 w-full"
+          priority
         />
       </div>
       <div className="mb-14">

@@ -13,7 +13,7 @@ const SingleHotel = ({ hotel }) => {
   let [auth, setAuth] = useState(false);
 
   const [index, setIndex] = useState(0);
-  const handleSelect = (selectedIndex, e) => {
+  const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
 
@@ -38,24 +38,24 @@ const SingleHotel = ({ hotel }) => {
         className="w-7/12 m-auto my-10
       "
       >
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-          {hotel.gallery.map((item) => (
+        {/* <Carousel activeIndex={index} onSelect={handleSelect}>
+          {hotel.gallery.map((item,i) => (
             <Carousel.Item
-              key={item.id}
+              key={i}
               interval={4000}
               // className={""}
             >
               <Image src={item} alt="slides" width={2000} height={2000} className="w-full h-large-box my-5" />
             </Carousel.Item>
           ))}
-        </Carousel>
-        {/* <Image
+        </Carousel> */}
+        <Image
           src={hotel.banner}
           alt="hotel"
           width={2000}
           height={2000}
           className="w-full h-large-box my-5"
-        /> */}
+        />
         ;
         <div className=" mx-20">
           <h3 className=" text-3xl font-bold">{hotel?.name}</h3>
@@ -66,9 +66,9 @@ const SingleHotel = ({ hotel }) => {
           <p className="text-3xl font-bold my-5">Facilities : </p>
           <ul className=" flex text-xl justify-between">
             {hotel
-              ? hotel.facilities?.map((ele) => (
+              ? hotel.facilities?.map((ele,i) => (
                   <span
-                    key={ele.name}
+                    key={i}
                     className=" mr-10 mb-3 flex items-center"
                   >
                     <span>
@@ -78,6 +78,7 @@ const SingleHotel = ({ hotel }) => {
                         width={100}
                         height={100}
                         className=" w-8 h-8 rounded-full"
+                        priority
                       />
                     </span>
                     <span>{ele.name}</span>

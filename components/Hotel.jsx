@@ -30,6 +30,7 @@ const Hotel = ({ e }) => {
                   width={200}
                   height={200}
                   className="w-28 h-20"
+                  priority
                 />
               ))
             }
@@ -51,6 +52,7 @@ const Hotel = ({ e }) => {
                       height={100}
                       className=" w-8 h-8 rounded-full"
                       alt="hotel"
+                      priority
                     />
                   </span>
                   <span>
