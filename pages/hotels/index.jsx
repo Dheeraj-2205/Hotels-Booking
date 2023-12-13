@@ -18,13 +18,6 @@ const Hotels = ({ hotels }) => {
     }
   }
 
-  useEffect(()=>{
-    if(checkedList){
-      handleCheckList();
-    }
-  },[checkedList,handleCheckList]);
-
-
   const handlePrice = async () => {
     const res = await fetch(`/api/facilities/range?price=${prices}`);
     const data = await res.json();
@@ -33,6 +26,16 @@ const Hotels = ({ hotels }) => {
       setList(data.hotels);
     }
   };
+
+  useEffect(()=>{
+    if(checkedList){
+      handleCheckList();
+    }
+    handlePrice();
+  },[checkedList,handleCheckList,handlePrice]);
+
+
+
   return (
     <>
       <Header />
