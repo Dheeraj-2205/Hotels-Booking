@@ -12,10 +12,10 @@ const SingleHotel = ({ hotel }) => {
   let router = useRouter();
   let [auth, setAuth] = useState(false);
 
-  const [index, setIndex] = useState(0);
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
+  // const [index, setIndex] = useState(0);
+  // const handleSelect = (selectedIndex) => {
+  //   setIndex(selectedIndex);
+  // };
 
   useEffect(() => {
     const cookie = Cookies.get("user");
