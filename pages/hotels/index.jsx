@@ -30,7 +30,8 @@ const Hotels = ({ hotels }) => {
     if(checkedList){
       handleCheckList();
     }
-  },[checkedList ]);
+    handlePrice();
+  },[checkedList,handlePrice ]);
 
 
 
